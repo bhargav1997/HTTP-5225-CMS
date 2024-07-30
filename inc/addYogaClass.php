@@ -4,13 +4,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $className = $_POST['className'];
     $classType = $_POST['classType'];
+    $instructorId = $_POST['instructorId'];
 
     // Include database connection
     include('../reusable/con.php');
     include('./functions.php');
 
     // Prepare SQL statement to prevent SQL injection
-    $query = "INSERT INTO classess (`Class Name`, `Class Level`) VALUES 
+    $query = "INSERT INTO classes (`name`, `level`, `instructor_id`) VALUES 
         ('" . mysqli_real_escape_string($connect, $className) . "', 
          '" . mysqli_real_escape_string($connect, $classType) . "')";
 

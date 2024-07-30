@@ -19,7 +19,7 @@ $instructors_query = 'SELECT id, name FROM instructors ORDER BY name';
 $instructors = mysqli_query($connect, $instructors_query);
 
 // Query to fetch all classes
-$query = 'SELECT * FROM classess ORDER BY `Class Name`';
+$query = 'SELECT * FROM classes ORDER BY `Class Name`';
 $classess = mysqli_query($connect, $query);
 ?>
 

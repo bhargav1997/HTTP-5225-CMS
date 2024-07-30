@@ -8,7 +8,7 @@
         $id = intval($id); // convert string to int
 
 
-        $query = "DELETE FROM classess WHERE `id` = '$id'";
+        $query = "DELETE FROM classes WHERE `id` = '$id'";
         $result = mysqli_query($connect, $query);
 
         if (!$result) {
