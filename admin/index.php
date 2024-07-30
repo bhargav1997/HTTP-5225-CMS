@@ -1,8 +1,7 @@
 <?php
 
-include( 'includes/database.php' );
-include( 'includes/config.php' );
-include( 'includes/functions.php' );
+include( '../reusable/con.php' );
+include( 'includes/admin_functions.php' );
 
 if( isset( $_POST['email'] ) )
 {
@@ -65,6 +64,6 @@ include( 'includes/header.php' );
 
 <?php
 
-include( 'includes/footer.php' );
+include( '../reusable/footer.php' );
 
 ?>

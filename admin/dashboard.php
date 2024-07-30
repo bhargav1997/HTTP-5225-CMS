@@ -1,8 +1,7 @@
 <?php
 
-include( 'includes/database.php' );
-include( 'includes/config.php' );
-include( 'includes/functions.php' );
+include( '../reusable/con.php' );
+include( 'includes/admin_functions.php' );
 
 secure();
 
@@ -11,11 +10,6 @@ include( 'includes/header.php' );
 ?>
 
 <ul id="dashboard">
-  <li>
-    <a href="projects.php">
-      Manage Projects
-    </a>
-  </li>
   <li>
     <a href="users.php">
       Manage Users
@@ -30,6 +24,6 @@ include( 'includes/header.php' );
 
 <?php
 
-include( 'includes/footer.php' );
+include( '../reusable/footer.php' );
 
 ?>
