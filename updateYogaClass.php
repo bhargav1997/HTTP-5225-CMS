@@ -39,7 +39,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <form action="./update.php" method="POST">
+          <form action="./inc/update.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $_POST['id'] ?>">
             <div class="mb-3">
               <label for="className" class="form-label">Class Name</label>

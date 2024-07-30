@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Prepare SQL statement to prevent SQL injection
     $query = "INSERT INTO classes (`name`, `level`, `instructor_id`) VALUES 
         ('" . mysqli_real_escape_string($connect, $className) . "', 
-         '" . mysqli_real_escape_string($connect, $classType) . "')";
+         '" . mysqli_real_escape_string($connect, $classType) . "',
+         '" . mysqli_real_escape_string($connect, $instructorId) . "')";
 
     $result = mysqli_query($connect, $query);
 
