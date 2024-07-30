@@ -1,10 +1,3 @@
-<?php
-
-include( 'admin/includes/database.php' );
-include( 'admin/includes/config.php' );
-include( 'admin/includes/functions.php' );
-
-?>
 <!doctype html>
 <html>
 <head>
