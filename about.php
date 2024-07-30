@@ -11,17 +11,31 @@
 </div>
 
 <div class="container custom-container">
-    <section id="studio">
-        <h2>Our Studio</h2>
-        <p class="lead">Welcome to our serene and welcoming yoga studio, where we strive to create a peaceful environment for all our students.</p>
+    <section id="studio" class="my-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Our Studio</h2>
+                <p class="lead">Welcome to our serene and welcoming yoga studio, where we strive to create a peaceful environment for all our students.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="images/studio.jpg" class="img-fluid rounded" alt="Yoga Studio">
+            </div>
+        </div>
     </section>
 
-    <section id="philosophy">
-        <h2>Our Philosophy</h2>
-        <p class="lead">At our yoga studio, we believe in the power of yoga to transform lives. We focus on combining physical practice with mindfulness and spiritual growth.</p>
+    <section id="philosophy" class="my-5">
+        <div class="row">
+            <div class="col-lg-6 order-lg-2">
+                <h2>Our Philosophy</h2>
+                <p class="lead">At our yoga studio, we believe in the power of yoga to transform lives. We focus on combining physical practice with mindfulness and spiritual growth.</p>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <img src="images/philosophy.jpg" class="img-fluid rounded" alt="Yoga Philosophy">
+            </div>
+        </div>
     </section>
 
-    <section id="instructors">
+    <section id="instructors" class="my-5">
         <h2>Our Instructors</h2>
         <div class="row">
             <?php
@@ -38,7 +52,7 @@
                 // Loop through each instructor
                 while ($instructor = mysqli_fetch_assoc($instructors)) {
                     echo '<div class="col-md-4">
-                            <div class="card mb-3 card-custom">
+                            <div class="card mb-4 card-custom">
                                 <img class="card-img-top img-fluid" src="' . $instructor['photoUrl'] . '" alt="' . htmlspecialchars($instructor['name']) . '">
                                 <div class="card-body">
                                     <h3 class="card-title">' . htmlspecialchars($instructor['name']) . '</h3>
