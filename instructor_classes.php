@@ -16,14 +16,21 @@ include('./inc/functions.php');
 
 $instructor_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-if ($instructor_id > 0) {
-    $query = "SELECT * FROM classes WHERE instructor_id = $instructor_id ORDER BY name";
-    $classes = mysqli_query($connect, $query);
+$classes = [];
+$instructor = null;
 
+if ($instructor_id > 0) {
     // Fetch instructor details
     $instructor_query = "SELECT * FROM instructors WHERE id = $instructor_id";
     $instructor_result = mysqli_query($connect, $instructor_query);
-    $instructor = mysqli_fetch_assoc($instructor_result);
+    if ($instructor_result) {
+        $instructor = mysqli_fetch_assoc($instructor_result);
+    }
+
+    if ($instructor) {
+        $query = "SELECT * FROM classes WHERE instructor_id = $instructor_id ORDER BY name";
+        $classes = mysqli_query($connect, $query);
+    }
 }
 ?>
 
@@ -41,36 +48,33 @@ if ($instructor_id > 0) {
                 </div>
             </div>
             <div class="row">
-                <?php
-                foreach ($classes as $class) {
-                    echo '<div class="col-md-4 mt-2 mb-2">
-                            <div class="card ' . $class['id'] . '">
-                                <div class="card-body">
-                                    <h5 class="card-title">' . htmlspecialchars($class['name']) . '</h5>
-                                    <p class="card-text">' . htmlspecialchars($class['level']) . '</p>
+                <?php while ($class = mysqli_fetch_assoc($classes)): ?>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm card-custom">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $class['name']; ?></h5>
+                            <p class="card-text"><?php echo $class['level']; ?></p>
+                            <p class="card-text"><strong>Instructor:</strong> <?php echo htmlspecialchars($instructor['name']); ?></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="./updateYogaClass.php" method="post">
+                                        <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
+                                        <input type="hidden" name="className" value="<?php echo $class['name']; ?>">
+                                        <input type="hidden" name="classType" value="<?php echo $class['level']; ?>">
+                                        <input type="hidden" name="instructorId" value="<?php echo $instructor['id']; ?>">
+                                        <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
+                                    </form>
+                                    <form action="./inc/deleteYogaClass.php" class="mx-2" method="get" name="deleteClassForm" onsubmit="return confirm(`Are you sure, you want to delete?`);">
+                                        <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger ml-2">Delete</button>
+                                    </form>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col">
-                                            <form action="./updateYogaClass.php" method="post">
-                                                <input type="hidden" name="id" value="' . $class['id'] . '">
-                                                <input type="hidden" name="className" value="' . htmlspecialchars($class['name']) . '">
-                                                <input type="hidden" name="classType" value="' . htmlspecialchars($class['level']) . '">
-                                                <button type="submit" class="btn btn-sm btn-primary">Update</button>
-                                            </form>
-                                        </div>
-                                        <div class="col">
-                                            <form action="./inc/deleteYogaClass.php" method="get" name="deleteClassForm" onsubmit="return confirm(`Are you sure, you want to delete?`);">
-                                                <input type="hidden" name="id" value="' . $class['id'] . '">
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <small class="text-muted"><?php echo $instructor['phone']; ?></small>
                             </div>
-                        </div>';  
-                }
-                ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endwhile; ?>
             </div>
         <?php else: ?>
             <div class="row">

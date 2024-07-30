@@ -8,26 +8,22 @@
   <title>Website Admin</title>
   
   <link href="../styles.css" type="text/css" rel="stylesheet">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
   
 </head>
 <body>
   
-  <h1>Website Admin</h1>
-  
-  <?php if(isset($_SESSION['id'])): ?>
 
-    <p style="padding: 0 1%; text-align: center;">
-      <a href="dashboard.php">Dashboard</a> | 
-      <a href="logout.php">Logout</a>
-    </p>
-  
-  <?php endif; ?>
-  
-  <hr>
-  
+  <div class="container-fluid bg-light py-5">
+      <div class="container text-center">
+          <div class="row">
+              <div class="col">
+                  <h1 class="display-3 text-dark">Website Admin</h1>
+              </div>
+          </div>
+      </div>
+  </div>
+
   <?php echo get_message(); ?>
-  
-  <div style="max-width: 1500px; margin: auto; padding: 0 1%;">
-  
+    

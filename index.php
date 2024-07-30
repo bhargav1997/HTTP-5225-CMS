@@ -1,14 +1,3 @@
-<!doctype html>
-<html>
-<head>
-  
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-  <title>Website Admin</title>
-  <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
-  
-</head>
-<body>
 <?php include 'reusable/nav.php'; ?>
 
 <div class="container-fluid bg-light py-5">
@@ -54,7 +43,7 @@ if (!$classess) {
                 $instructor = mysqli_fetch_assoc($instructor_result);
                 ?>
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm card-custom">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $class['name']; ?></h5>
                             <p class="card-text"><?php echo $class['level']; ?></p>
