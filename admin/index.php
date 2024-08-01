@@ -69,39 +69,6 @@ include('./includes/header.php');
     </div>
 
     <?php include('./manage_users.php'); ?>
-<!--     
-    <div class="mt-5 " id="addClassForm">
-        <h2 class="text-center">Add Yoga Class</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <?php echo get_message(); ?>
-                <form action="index.php" method="POST">
-                    <div class="mb-3">
-                        <label for="ClassName" class="form-label">Class Name</label>
-                        <input type="text" class="form-control" id="ClassName" name="className" placeholder="Class Name Here" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="ClassType" class="form-label">Class Level</label>
-                        <input type="text" class="form-control" id="ClassType" name="classType" placeholder="Class Type Here (Primary, Middle, High)" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Instructor" class="form-label">Instructor</label>
-                        <select class="form-select" id="Instructor" name="instructorId" required>
-                            <option selected disabled>Select Instructor</option>
-                            <?php
-                            // Query to fetch all instructors
-                            $instructors_query = 'SELECT id, name FROM instructors ORDER BY name';
-                            $instructors = mysqli_query($connect, $instructors_query);
-                            while ($row = mysqli_fetch_assoc($instructors)) : ?>
-                                <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['name']); ?></option>
-                            <?php endwhile; ?>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Class</button>
-                </form>
-            </div>
-        </div>
-    </div> -->
 
 </div>
 

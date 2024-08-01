@@ -1,132 +1,84 @@
 <?php
-
-
-include( '../reusable/con.php' );
-include( 'includes/admin_functions.php' );
-
+include('../reusable/con.php');
+include('includes/admin_functions.php');
 
 secure();
 
-if( !isset( $_GET['id'] ) )
-{
-  
-  header( 'Location: users.php' );
-  die();
-  
+if (!isset($_GET['id'])) {
+    header('Location: users.php');
+    exit();
 }
 
-if( isset( $_POST['first'] ) )
-{
-  
-  if( $_POST['first'] and $_POST['last'] and $_POST['email'] )
-  {
-    
-    $query = 'UPDATE users SET
-      first = "'.mysqli_real_escape_string( $connect, $_POST['first'] ).'",
-      last = "'.mysqli_real_escape_string( $connect, $_POST['last'] ).'",
-      email = "'.mysqli_real_escape_string( $connect, $_POST['email'] ).'",
-      active = "'.$_POST['active'].'"
-      WHERE id = '.$_GET['id'].'
-      LIMIT 1';
-    mysqli_query( $connect, $query );
-    
-    if( $_POST['password'] )
-    {
-      
-      $query = 'UPDATE users SET
-        password = "'.md5( $_POST['password'] ).'"
-        WHERE id = '.$_GET['id'].'
-        LIMIT 1';
-      mysqli_query( $connect, $query );
-      
+$userId = intval($_GET['id']);
+$query = "SELECT * FROM users WHERE id = $userId LIMIT 1";
+$result = mysqli_query($connect, $query);
+
+if (!$result || mysqli_num_rows($result) == 0) {
+    header('Location: users.php');
+    exit();
+}
+
+$record = mysqli_fetch_assoc($result);
+
+if (isset($_POST['first'])) {
+    if ($_POST['first'] && $_POST['last'] && $_POST['email']) {
+        $first = mysqli_real_escape_string($connect, $_POST['first']);
+        $last = mysqli_real_escape_string($connect, $_POST['last']);
+        $email = mysqli_real_escape_string($connect, $_POST['email']);
+        $active = mysqli_real_escape_string($connect, $_POST['active']);
+
+        $query = "UPDATE users SET first = '$first', last = '$last', email = '$email', active = '$active' WHERE id = $userId LIMIT 1";
+        if (mysqli_query($connect, $query)) {
+            set_message('User has been updated');
+        } else {
+            set_message('Error updating user: ' . mysqli_error($connect));
+        }
+
+        if ($_POST['password']) {
+            $password = md5($_POST['password']);
+            $query = "UPDATE users SET password = '$password' WHERE id = $userId LIMIT 1";
+            if (!mysqli_query($connect, $query)) {
+                set_message('Error updating password: ' . mysqli_error($connect));
+            }
+        }
+
+        header('Location: users.php');
+        exit();
     }
-    
-    set_message( 'User has been updated' );
-    
-  }
-
-  header( 'Location: users.php' );
-  die();
-  
 }
 
-
-if( isset( $_GET['id'] ) )
-{
-  
-  $query = 'SELECT *
-    FROM users
-    WHERE id = '.$_GET['id'].'
-    LIMIT 1';
-  $result = mysqli_query( $connect, $query );
-  
-  if( !mysqli_num_rows( $result ) )
-  {
-    
-    header( 'Location: users.php' );
-    die();
-    
-  }
-  
-  $record = mysqli_fetch_assoc( $result );
-  
-}
-
-include( 'includes/header.php' );
-
+include('../reusable/nav.php');
 ?>
 
-<h2>Edit User</h2>
+<div class="container mt-5">
+    <h2>Edit User</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="first" class="form-label">First:</label>
+            <input type="text" class="form-control" id="first" name="first" value="<?php echo htmlspecialchars($record['first']); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="last" class="form-label">Last:</label>
+            <input type="text" class="form-control" id="last" name="last" value="<?php echo htmlspecialchars($record['last']); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($record['email']); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password (leave blank to keep current):</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="mb-3">
+            <label for="active" class="form-label">Active:</label>
+            <select class="form-select" id="active" name="active" required>
+                <option value="Yes" <?php if ($record['active'] == 'Yes') echo 'selected'; ?>>Yes</option>
+                <option value="No" <?php if ($record['active'] == 'No') echo 'selected'; ?>>No</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit User</button>
+    </form>
+    <p class="mt-3"><a href="users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
+</div>
 
-<form method="post">
-  
-  <label for="first">First:</label>
-  <input type="text" name="first" id="first" value="<?php echo htmlentities( $record['first'] ); ?>">
-  
-  <br>
-  
-  <label for="last">Last:</label>
-  <input type="text" name="last" id="last" value="<?php echo htmlentities( $record['last'] ); ?>">
-  
-  <br>
-  
-  <label for="email">Email:</label>
-  <input type="email" name="email" id="email" value="<?php echo htmlentities( $record['email'] ); ?>">
-  
-  <br>
-  
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password">
-  
-  <br>
-  
-  <label for="active">Active:</label>
-  <?php
-  
-  $values = array( 'Yes', 'No' );
-  
-  echo '<select name="active" id="active">';
-  foreach( $values as $key => $value )
-  {
-    echo '<option value="'.$value.'"';
-    if( $value == $record['active'] ) echo ' selected="selected"';
-    echo '>'.$value.'</option>';
-  }
-  echo '</select>';
-  
-  ?>
-  
-  <br>
-  
-  <input type="submit" value="Edit User">
-  
-</form>
-
-<p><a href="users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
-
-
-<?php
-
-include( '../includes/footer.php' );
-
-?>
+<?php include('../reusable/footer.php'); ?>

@@ -1,101 +1,61 @@
 <?php
-
-include( '../reusable/con.php' );
-include( 'includes/admin_functions.php' );
+include('../reusable/con.php');
+include('includes/admin_functions.php');
 
 secure();
 
-if( isset( $_POST['first'] ) )
-{
-  
-  if( $_POST['first'] and $_POST['last'] and $_POST['email'] and $_POST['password'] )
-  {
-    
-    $query = 'INSERT INTO users (
-        first,
-        last,
-        email,
-        password,
-        active
-      ) VALUES (
-        "'.mysqli_real_escape_string( $connect, $_POST['first'] ).'",
-        "'.mysqli_real_escape_string( $connect, $_POST['last'] ).'",
-        "'.mysqli_real_escape_string( $connect, $_POST['email'] ).'",
-        "'.md5( $_POST['password'] ).'",
-        "'.$_POST['active'].'"
-      )';
-    mysqli_query( $connect, $query );
-    
-    set_message( 'User has been added' );
-    
-  }
+if (isset($_POST['first'])) {
+    if ($_POST['first'] && $_POST['last'] && $_POST['email'] && $_POST['password']) {
+        $first = mysqli_real_escape_string($connect, $_POST['first']);
+        $last = mysqli_real_escape_string($connect, $_POST['last']);
+        $email = mysqli_real_escape_string($connect, $_POST['email']);
+        $password = md5($_POST['password']);
+        $active = mysqli_real_escape_string($connect, $_POST['active']);
 
-  /*
-  // Example of debugging a query
-  print_r($_POST);
-  print_r($query);
-  die();
-  */
+        $query = "INSERT INTO users (first, last, email, password, active) VALUES ('$first', '$last', '$email', '$password', '$active')";
+        if (mysqli_query($connect, $query)) {
+            set_message('User has been added');
+        } else {
+            set_message('Error adding user: ' . mysqli_error($connect));
+        }
 
-  header( 'Location: users.php' );
-  die();
-  
+        header('Location: users.php');
+        exit();
+    }
 }
 
-include( 'includes/header.php' );
-
+include('../reusable/nav.php');
 ?>
 
-<h2>Add User</h2>
+<div class="container mt-5">
+    <h2>Add User</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="first" class="form-label">First Name:</label>
+            <input type="text" class="form-control" id="first" name="first" required>
+        </div>
+        <div class="mb-3">
+            <label for="last" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" id="last" name="last" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="active" class="form-label">Active:</label>
+            <select class="form-select" id="active" name="active" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Add User</button>
+    </form>
+    <p class="mt-3"><a href="users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
+</div>
 
-<form method="post">
-  
-  <label for="first">First Name:</label>
-  <input type="text" name="first" id="first">
-  
-  <br>
-  
-  <label for="last">Last Name:</label>
-  <input type="text" name="last" id="last">
-  
-  <br>
-  
-  <label for="email">Email:</label>
-  <input type="email" name="email" id="email">
-  
-  <br>
-  
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password">
-  
-  <br>
-  
-  <label for="active">Active:</label>
-  <?php
-  
-  $values = array( 'Yes', 'No' );
-  
-  echo '<select name="active" id="active">';
-  foreach( $values as $key => $value )
-  {
-    echo '<option value="'.$value.'"';
-    echo '>'.$value.'</option>';
-  }
-  echo '</select>';
-  
-  ?>
-  
-  <br>
-  
-  <input type="submit" value="Add User">
-  
-</form>
-
-<p><a href="users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
-
-
-<?php
-
-include( '../resusable/footer.php' );
-
-?>
+<?php include('../reusable/footer.php'); ?>
