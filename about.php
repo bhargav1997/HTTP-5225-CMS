@@ -1,6 +1,6 @@
 <?php include "reusable/nav.php"; ?>
 
-<div class="container-fluid bg-light py-5">
+<div class="container-fluid bg-light py-3">
     <div class="container text-center">
         <div class="row">
             <div class="col">
@@ -12,8 +12,8 @@
 
 <div class="container custom-container">
     <section id="studio" class="my-5">
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row d-flex align-items-center"> <!-- Add d-flex and align-items-center classes here -->
+            <div class="col-lg-6 d-flex flex-column justify-content-center"> <!-- Add d-flex, flex-column, and justify-content-center classes here -->
                 <h2>Our Studio</h2>
                 <p class="lead">Welcome to our serene and welcoming yoga studio, where we strive to create a peaceful environment for all our students.</p>
             </div>
@@ -24,8 +24,8 @@
     </section>
 
     <section id="philosophy" class="my-5">
-        <div class="row">
-            <div class="col-lg-6 order-lg-2">
+        <div class="row d-flex align-items-center"> <!-- Add d-flex and align-items-center classes here -->
+            <div class="col-lg-6 order-lg-2 d-flex flex-column justify-content-center"> <!-- Add d-flex, flex-column, and justify-content-center classes here -->
                 <h2>Our Philosophy</h2>
                 <p class="lead">At our yoga studio, we believe in the power of yoga to transform lives. We focus on combining physical practice with mindfulness and spiritual growth.</p>
             </div>

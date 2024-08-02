@@ -1,14 +1,6 @@
 <?php include 'reusable/nav.php'; ?>
 
-<div class="container-fluid bg-light py-5">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                <h1 class="display-3 text-dark">Yoga Classes</h1>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <?php 
@@ -25,8 +17,19 @@ if (!$classess) {
 }
 
 ?>
+<div class="banner-image ">
+    <div class="container h-100 d-flex flex-column justify-content-start align-items-center pt-5">
+        <h1 class="banner-text">Yoga for your restless mind</h1>
 
-<div class="container mt-5">
+        <p class="banner-paragh">Experience our programs,practices,books and mentorship to calm your mind  and fortify your resilency</p>
+    </div>
+</div>
+<div class="text-center mt-4 mb-4">
+        <h2 class="display-4 best-yoga-classes">Yoga Classes</h2>
+        <p class="lead text-muted">Find the most popular and highly recommended yoga classes available.</p>
+</div>
+
+<div class="container mt-5 mb-5 py-3">
     <div class="row">
         <?php
         // Check if there are classes to display
@@ -45,7 +48,8 @@ if (!$classess) {
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card shadow-sm card-custom">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $class['name']; ?></h5>
+                            <img src="<?php echo htmlspecialchars($class['imagePath']); ?>" class="card-img-top" alt="Class cover picture">
+                            <h5 class="card-title card-title-custom"><?php echo $class['name']; ?></h5>
                             <p class="card-text"><?php echo $class['level']; ?></p>
                             <p class="card-text"><strong>Instructor:</strong> <?php echo htmlspecialchars($instructor['name']); ?></p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -54,6 +58,7 @@ if (!$classess) {
                                         <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
                                         <input type="hidden" name="className" value="<?php echo $class['name']; ?>">
                                         <input type="hidden" name="classType" value="<?php echo $class['level']; ?>">
+                                        <input type="hidden" name="imagePath" value="<?php echo $class['imagePath']; ?>">
                                         <input type="hidden" name="instructorId" value="<?php echo $instructor['id']; ?>">
                                         <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
                                     </form>

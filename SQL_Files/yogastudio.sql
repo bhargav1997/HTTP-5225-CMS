@@ -31,20 +31,21 @@ CREATE TABLE `classes` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `level` varchar(255) DEFAULT NULL,
-  `instructor_id` int(11) DEFAULT NULL
+  `instructor_id` int(11) DEFAULT NULL,
+  `imagePath` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`id`, `name`, `level`, `instructor_id`) VALUES
-(1, 'Yoga Basics', 'Beginner', 1),
-(2, 'Advanced Yoga', 'Advanced', 1),
-(3, 'Vinyasa Flow', 'Intermediate', 2),
-(4, 'Hatha Yoga', 'Intermediate', 2),
-(5, 'Power Yoga', 'Advanced', 3),
-(6, 'Meditative Yoga', 'Advanced', 3);
+INSERT INTO `classes` (`id`, `name`, `level`, `instructor_id`, `imagePath`) VALUES
+(1, 'Yoga Basics', 'Beginner', 1, 'images/BasicYoga.jpg') ,
+(2, 'Advanced Yoga', 'Advanced', 1, 'images/AdvancedYoga.jpg'),
+(3, 'Vinyasa Flow', 'Intermediate', 2, 'images/VinyasaYoga.jpg'),
+(4, 'Hatha Yoga', 'Intermediate', 2, 'images/HathaYoga.jpg'),
+(5, 'Power Yoga', 'Advanced', 3, 'images/PowerYoga.jpg'),
+(6, 'Meditative Yoga', 'Advanced', 3, 'images/MeditativeYoga.jpg');
 
 -- --------------------------------------------------------
 

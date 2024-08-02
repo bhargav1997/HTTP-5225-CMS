@@ -6,8 +6,24 @@
         $className = $_POST['className'];
         $classType = $_POST['classType'];
         $instructorId = $_POST['instructorId'];
+        $imagePath = $_POST['currentImage'];
+        if(isset($_FILES['ClassImg']) && $_FILES['ClassImg']['error'] == 0) {
+            $uploadDir = '../images/'; // Make sure this directory exists and is writable
+            $fileName = basename($_FILES['ClassImg']['name']);
+            $targetFilePath = $uploadDir . $fileName;
+            
+            // Move the uploaded file to the specified directory
+            if(move_uploaded_file($_FILES['ClassImg']['tmp_name'], $targetFilePath)) {
+                $imagePath = 'images/' . $fileName; // Store the relative path in the database
+            } else {
+                set_messages('Error uploading file.', 'error');
+                header('Location: ../index.php');
+                exit();
+            }
+        }
  
-        $sql = "UPDATE classes SET `name` = '$className', `level` = '$classType', `instructor_id` = '$instructorId' WHERE id = '$id'";
+        // echo $ima0gePath;
+        $sql = "UPDATE classes SET `name` = '$className', `level` = '$classType', `instructor_id` = '$instructorId', `imagePath` = '$imagePath' WHERE id = '$id'";
     
         $result = mysqli_query($connect, $sql);
         if($result) {
