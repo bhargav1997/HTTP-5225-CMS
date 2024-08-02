@@ -54,7 +54,7 @@ $classess = mysqli_query($connect, $query);
               <?php endwhile; ?>
             </select>
           </div>
-          <button type="submit" class="btn btn-custom">Add Class</button>
+          <button type="submit" class="btn btn-custom  <?php if(empty($_SESSION['email'])) { echo 'disabled'; } else { echo ''; } ?>">Add Class</button>
         </form>
       </div>
     </div>

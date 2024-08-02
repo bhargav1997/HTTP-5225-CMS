@@ -1,9 +1,5 @@
-<?php include 'reusable/nav.php'; ?>
-
-
-
-
 <?php 
+include 'reusable/nav.php';
 include('./reusable/con.php');
 include('inc/functions.php');
 
@@ -59,11 +55,11 @@ if (!$classess) {
                                         <input type="hidden" name="classType" value="<?php echo $class['level']; ?>">
                                         <input type="hidden" name="imagePath" value="<?php echo $class['imagePath']; ?>">
                                         <input type="hidden" name="instructorId" value="<?php echo $instructor['id']; ?>">
-                                        <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
+                                        <button type="submit" class="btn btn-sm btn-outline-primary <?php if(empty($_SESSION['email'])) { echo 'disabled'; } else { echo ''; } ?>">Update</button>
                                     </form>
                                     <form action="./inc/deleteYogaClass.php" class="mx-2" method="get" name="deleteClassForm" onsubmit="return confirm(`Are you sure, you want to delete?`);">
                                         <input type="hidden" name="id" value="<?php echo $class['id']; ?>">
-                                        <button type="submit" class="btn btn-sm btn-outline-danger ml-2">Delete</button>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger ml-2  <?php if(empty($_SESSION['email'])) { echo 'disabled'; } else { echo ''; } ?>">Delete</button>
                                     </form>
                                 </div>
                                 <small class="text-muted"><?php echo $instructor['phone']; ?></small>
