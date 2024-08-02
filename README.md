@@ -10,6 +10,12 @@ This is a CMS for HTTP-5225.
 
 3. Update con.php with your database credentials (reusable/con.php)
 
+## For Admin
+
+1. Click on Login
+2. Admin Creds for Testing:
+- Email: admin@gmail.com
+- Password: admin 
 
 # References
 
