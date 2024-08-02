@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 30, 2024 at 02:00 AM
+-- Generation Time: Aug 02, 2024 at 07:28 PM
 -- Server version: 5.7.39
 -- PHP Version: 7.4.33
 
@@ -40,7 +40,7 @@ CREATE TABLE `classes` (
 --
 
 INSERT INTO `classes` (`id`, `name`, `level`, `instructor_id`, `imagePath`) VALUES
-(1, 'Yoga Basics', 'Beginner', 1, 'images/BasicYoga.jpg') ,
+(1, 'Yoga Basics', 'Beginner', 1, 'images/BasicYoga.jpg'),
 (2, 'Advanced Yoga', 'Advanced', 1, 'images/AdvancedYoga.jpg'),
 (3, 'Vinyasa Flow', 'Intermediate', 2, 'images/VinyasaYoga.jpg'),
 (4, 'Hatha Yoga', 'Intermediate', 2, 'images/HathaYoga.jpg'),
@@ -71,6 +71,30 @@ INSERT INTO `instructors` (`id`, `name`, `bio`, `email`, `phone`, `photoUrl`) VA
 (2, 'Bob Smith', 'Specializes in Vinyasa and Hatha yoga.', 'bob@example.com', '456-789-0123', 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
 (3, 'Fellipe Ditadi', 'Experienced yoga instructor focusing on Power Yoga and Meditative Yoga.', 'fellipe@example.com', '789-012-3456', 'https://images.unsplash.com/photo-1492633397843-92adffad3d1c?q=80&w=2873&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `first` varchar(25) DEFAULT NULL,
+  `last` varchar(25) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `active` enum('Yes','No') NOT NULL DEFAULT 'Yes',
+  `dateAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first`, `last`, `email`, `password`, `active`, `dateAdded`) VALUES
+(1, 'Jane', 'Doe', 'email@address.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Yes', '2022-01-08 02:12:46'),
+(2, 'Admin', 'Admin', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Yes', '2024-07-23 01:46:13');
+
 --
 -- Indexes for dumped tables
 --
@@ -89,6 +113,12 @@ ALTER TABLE `instructors`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -103,6 +133,12 @@ ALTER TABLE `classes`
 --
 ALTER TABLE `instructors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
