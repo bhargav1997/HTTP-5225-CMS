@@ -147,6 +147,7 @@ section img {
 }
 
 .custom-spacing{ 
+   margin-top: 20px;
    margin-bottom: 60px;
    padding-bottom: 60px;
 }

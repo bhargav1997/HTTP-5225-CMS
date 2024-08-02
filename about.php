@@ -1,14 +1,6 @@
 <?php include "reusable/nav.php"; ?>
 
-<div class="container-fluid bg-light py-3">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                <h1 class="display-3 text-dark">About Yoga Classes</h1>
-            </div>
-        </div>
-    </div>
-</div>
+<?php include 'reusable/hero.php'; ?>
 
 <div class="container custom-container">
     <section id="studio" class="my-5">

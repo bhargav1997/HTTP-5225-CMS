@@ -1,14 +1,6 @@
 <?php include 'reusable/nav.php'; ?>
 
-<div class="container-fluid bg-light py-3">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col">
-        <h1 class="display-3 text-dark">Yoga Classes</h1>
-      </div>
-    </div>
-  </div>
-</div>
+<?php include 'reusable/hero.php'; ?>
 
 <?php 
 include('./reusable/con.php');
@@ -23,15 +15,15 @@ $query = 'SELECT * FROM classes ORDER BY `Class Name`';
 $classess = mysqli_query($connect, $query);
 ?>
 
-<div class="container my-5">
+<div class="container custom-spacing">
   <div class="row">
     <div class="col">
       <?php get_messages(); ?>
     </div>
   </div>
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-md-6">
-      <div class="form-container"> <!-- Add the form-container class here -->
+      <div class="form-container">
         <form action="inc/addYogaClass.php" method="POST" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="ClassName" class="form-label">Class Name</label>
