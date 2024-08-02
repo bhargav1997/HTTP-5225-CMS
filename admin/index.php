@@ -38,7 +38,7 @@ if (isset($_POST['email'])) {
             
             $_SESSION['id'] = $record['id'];
             $_SESSION['email'] = $record['email'];
-            
+
             header('Location: ./index.php');
             exit(); // Use exit() after header redirection
         } else {
@@ -82,15 +82,15 @@ include('./includes/header.php');
                     <?php echo get_message(); ?>
                     <form method="post">
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" class="form-control" required>
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" name="email" id="email" class="form-control" required placeholder="Enter your email (ex: xxx@test.com)">
                         </div>
                         <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" name="password" id="password" class="form-control" required>
+                            <label for="password" class="form-label">Password:</label>
+                            <input type="password" name="password" id="password" class="form-control" required placeholder="Enter your password">
                         </div>
                         <div class="text-center d-flex justify-content-start mt-3">
-                            <input type="submit" value="Login" class="btn btn-primary">
+                            <input type="submit" value="Sign In" class="btn btn-custom text-bold">
                         </div>
                     </form>
                 </div>

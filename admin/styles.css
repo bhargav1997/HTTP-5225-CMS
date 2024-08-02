@@ -5,8 +5,9 @@
 }
 
 body {
-   background-color: #f8f9fa;
    font-family: "Arial, sans-serif";
+   line-height: 1.6;
+   background-color: rgb(167 195 167);
 }
 
 a:link,
@@ -16,17 +17,17 @@ a:visited {
    text-decoration: none;
 }
 
-table {
-   width: 100%;
-   border: 1px solid #ccc;
-   border-spacing: 0;
-   border-collapse: collapse;
+.table thead th {
+   background-color: #343a40;
+   color: #fff;
 }
 
-td img,
-th img {
-   margin: 0;
-   padding: 0;
+.table tbody tr:hover {
+   background-color: #f1f1f1;
+}
+
+.table tbody td {
+   vertical-align: middle;
 }
 
 td,
@@ -149,13 +150,18 @@ input[type="submit"] {
    border-radius: 0.5rem;
 }
 
-.navbar-custom .navbar-brand {
+.navbar-custom,
+.navbar-brand {
    font-size: 1.5rem;
    font-weight: bold;
+   border-bottom-left-radius: 70px;
+   border-bottom-right-radius: 70px;
+   border-top-left-radius: 0px;
+   border-top-right-radius: 0px;
 }
 
 .navbar-custom .nav-link {
-   font-size: 1.2rem;
+   font-size: 1.4rem;
 }
 
 .navbar-custom .nav-link:hover {
@@ -165,4 +171,15 @@ input[type="submit"] {
 .navbar-custom .nav-separator {
    color: #6c757d;
    font-size: 1.2rem;
+}
+
+.btn-custom {
+   background-color: rgb(50, 66, 50) !important;
+   border-color: rgb(152, 191, 152) !important;
+   color: white;
+}
+
+.btn-custom:hover {
+   background-color: rgb(193, 212, 97) !important;
+   color: rgb(0, 0, 0) !important;
 }

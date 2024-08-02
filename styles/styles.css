@@ -7,6 +7,7 @@
 body {
    font-family: "Arial, sans-serif";
    line-height: 1.6;
+   background-color: rgb(167 195 167);
 }
 
 .card-custom {
@@ -54,79 +55,80 @@ section img {
    background-color: #0056b3;
 }
 
-.navbar {
+/* .navbar {
    background-color: rgb(35, 47, 35);
    height: 50px;
-   padding-top: 2.5rem; 
-   padding-bottom: 2.5rem; 
+   padding-top: 2.5rem;
+   padding-bottom: 2.5rem;
+   color: #ddd;
+} */
+
+.navbar a,
+.navbar span {
+   color: white;
+   font-size: 25px;
+   color: rgb(45, 58, 58) !important;
+   font-style: italic;
 }
 
-.navbar a, .navbar span {
-   color: white; 
-   font-size: 20px;
-}
-body{
-   background-color:rgb(167 195 167);
-}
 .footer {
-   background-color:  rgb(50, 66, 50);
-   color: white; 
+   background-color: rgb(50, 66, 50);
+   color: white;
    padding: 10px 0;
    position: fixed;
    bottom: 0;
    width: 100%;
 }
 .banner-image {
-   background-image: url('../images/yoga-banner.jpg'); 
+   background-image: url("../images/view-man-practicing-mindfulness-yoga-fantasy-setting.jpg");
    background-size: cover;
+   object-position: center;
    height: 500px;
-   box-shadow: 0 4px 50px rgba(0, 128, 0, 0.5); 
+   box-shadow: 0 4px 50px rgba(0, 128, 0, 0.5);
 }
-.banner-text{
+.banner-text {
    color: rgb(45, 58, 58);
    font-style: italic;
    font-size: 70px;
-  
+   font-weight: bold;
 }
-.banner-paragh{
+.banner-paragh {
    color: rgb(45, 58, 58);
-   
    font-size: 22px;
-
 }
+
 .navbar-brand {
    font-weight: bold;
-   
 }
 
-.navbar-brand.logo{
+.navbar-brand.logo {
    font-size: 2.25rem;
 }
 
 .card-title-custom {
-   background-color:  rgb(50, 66, 50);;
+   background-color: rgb(50, 66, 50);
    color: white;
    padding: 8px;
    border-radius: 5px;
    text-align: center;
    margin-top: 1rem;
 }
-.footer-text{
+.footer-text {
    font-size: 20px;
 }
 
 .form-container {
-   background-color: rgba(255, 255, 255, 0.8); 
-   border: 1px solid #ddd; 
-   border-radius: 15px; 
-   padding: 20px; 
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+   background-color: rgba(255, 255, 255, 0.8);
+   border: 1px solid #ddd;
+   border-radius: 15px;
+   padding: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .form-container .form-label {
    text-align: left;
 }
+
 .btn-custom {
    background-color: rgb(50, 66, 50);
    border-color: rgb(152, 191, 152);
@@ -135,12 +137,11 @@ body{
 
 .btn-custom:hover {
    background-color: rgb(193, 212, 97);
-   
 }
 
 .custom-card {
-   background-color: rgba(255, 255, 255, 0.8); 
-   border-radius: 15px; 
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 15px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    padding: 20px;
 }
