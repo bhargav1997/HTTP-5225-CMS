@@ -1,8 +1,11 @@
 <?php
+
+
 session_start(); // Start the session
 
 include('../reusable/con.php');
 include('./includes/admin_functions.php');
+
 
 // Handle class addition
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['className'])) {

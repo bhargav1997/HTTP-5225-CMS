@@ -3,7 +3,7 @@
 function secure()
 {
   
-  if( !isset( $_SESSION['id'] ) )
+  if(empty( $_SESSION['email'] ) )
   {
     
     header( 'Location: /' );

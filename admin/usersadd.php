@@ -1,8 +1,7 @@
 <?php
-include('../reusable/con.php');
-include('includes/admin_functions.php');
 
-secure();
+include('../reusable/con.php');
+include('./includes/admin_functions.php');
 
 if (isset($_POST['first'])) {
     if ($_POST['first'] && $_POST['last'] && $_POST['email'] && $_POST['password']) {
@@ -19,15 +18,19 @@ if (isset($_POST['first'])) {
             set_message('Error adding user: ' . mysqli_error($connect));
         }
 
-        header('Location: users.php');
+        header('Location: manage_users.php');
         exit();
     }
 }
 
-include('../reusable/nav.php');
 ?>
 
-<div class="container mt-5">
+<?php
+  include('./includes/header.php');
+  include('./includes/nav.php');
+?>
+
+<div class="container custom-spacing">
     <h2>Add User</h2>
     <form method="post">
         <div class="mb-3">
@@ -55,7 +58,7 @@ include('../reusable/nav.php');
         </div>
         <button type="submit" class="btn btn-success">Add User</button>
     </form>
-    <p class="mt-3"><a href="users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
+    <p class="mt-3"><a href="manage_users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
 </div>
 
 <?php include('../reusable/footer.php'); ?>

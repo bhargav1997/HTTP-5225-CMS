@@ -1,8 +1,9 @@
 <?php
-include('../reusable/con.php');
-include('includes/admin_functions.php');
 
-secure();
+session_start(); // Start the session
+
+include('../reusable/con.php');
+include('./includes/admin_functions.php');
 
 if (!isset($_GET['id'])) {
     header('Location: users.php');
@@ -42,15 +43,19 @@ if (isset($_POST['first'])) {
             }
         }
 
-        header('Location: users.php');
+        header('Location: manage_users.php');
         exit();
     }
 }
 
-include('../reusable/nav.php');
 ?>
 
-<div class="container mt-5">
+<?php
+  include('./includes/header.php');
+  include('./includes/nav.php');
+?>
+
+<div class="container custom-spacing">
     <h2>Edit User</h2>
     <form method="post">
         <div class="mb-3">
@@ -78,7 +83,7 @@ include('../reusable/nav.php');
         </div>
         <button type="submit" class="btn btn-primary">Edit User</button>
     </form>
-    <p class="mt-3"><a href="users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
+    <p class="mt-3"><a href="manage_users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
 </div>
 
 <?php include('../reusable/footer.php'); ?>
