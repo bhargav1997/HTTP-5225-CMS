@@ -76,6 +76,10 @@ include('./includes/header.php');
 </div>
 
 <?php else: ?>
+
+<?php
+  include('./includes/nav.php');
+?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">

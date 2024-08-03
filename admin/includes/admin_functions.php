@@ -1,17 +1,17 @@
 <?php
 
-function secure()
-{
+// function secure()
+// {
   
-  if(empty( $_SESSION['email'] ) )
-  {
+//   if(empty( $_SESSION['email'] ) )
+//   {
     
-    header( 'Location: /' );
-    die();
+//     header( 'Location: /' );
+//     die();
     
-  }
+//   }
   
-}
+// }
 
 function set_message( $message )
 {

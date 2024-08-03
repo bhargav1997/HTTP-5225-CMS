@@ -6,7 +6,7 @@ include('../reusable/con.php');
 include('./includes/admin_functions.php');
 
 if (!isset($_GET['id'])) {
-    header('Location: users.php');
+    header('Location: index.php');
     exit();
 }
 
@@ -15,7 +15,7 @@ $query = "SELECT * FROM users WHERE id = $userId LIMIT 1";
 $result = mysqli_query($connect, $query);
 
 if (!$result || mysqli_num_rows($result) == 0) {
-    header('Location: users.php');
+    header('Location: index.php');
     exit();
 }
 
@@ -43,7 +43,7 @@ if (isset($_POST['first'])) {
             }
         }
 
-        header('Location: manage_users.php');
+        header('Location: index.php');
         exit();
     }
 }
@@ -83,7 +83,7 @@ if (isset($_POST['first'])) {
         </div>
         <button type="submit" class="btn btn-primary">Edit User</button>
     </form>
-    <p class="mt-3"><a href="manage_users.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
+    <p class="mt-3"><a href="index.php"><i class="fas fa-arrow-circle-left"></i> Return to User List</a></p>
 </div>
 
 <?php include('../reusable/footer.php'); ?>

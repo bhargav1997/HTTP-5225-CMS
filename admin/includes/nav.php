@@ -8,9 +8,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
         </li>
+        <?php if (!empty($_SESSION['email'])): ?>
+
         <li class="nav-item">
           <a class="nav-link" href="./logout.php">Logout</a>
         </li>
+
+        <?php endif; ?>
       </ul>
     </div>
   </div>
