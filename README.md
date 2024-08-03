@@ -6,10 +6,16 @@ This is a CMS for HTTP-5225.
 
 1. Create Database `yogastudio`
 
-2. Import `yogastudio.sql` to `cms.sql` SQL File from SQL_Files folder
+2. Import `yogastudio.sql` SQL File from the SQL_Files folder
 
 3. Update con.php with your database credentials (reusable/con.php)
 
+## For Admin
+
+1. Click on Login
+2. Admin Creds for Testing:
+- Email: admin@gmail.com
+- Password: admin 
 
 # References
 
