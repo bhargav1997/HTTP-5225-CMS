@@ -1,7 +1,4 @@
-<?php
-
-    header( 'Content-type: text/html; charset=utf-8' );
-    
+<?php    
     function set_messages($message, $className){
         $_SESSION['message'] = $message;
         $_SESSION['className'] = $className;
