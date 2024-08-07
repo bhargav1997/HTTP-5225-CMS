@@ -1,14 +1,6 @@
 <?php include 'reusable/nav.php'; ?>
 
-<div class="container-fluid bg-light py-5">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                <h1 class="display-3 text-dark">Yoga Classes</h1>
-            </div>
-        </div>
-    </div>
-</div>
+<?php include 'reusable/hero.php'; ?>
 
 <?php 
 include('./reusable/con.php');
@@ -40,12 +32,14 @@ if ($instructor_id > 0) {
             <?php get_messages(); ?>
         </div>
     </div>
+    
     <?php if ($instructor): ?>
         <div class="row">
             <div class="col mt-4 mb-4">
-                <h2>Classes by <?php echo htmlspecialchars($instructor['name']); ?></h2>
+                <h2 class="display-6">Classes by <?php echo htmlspecialchars($instructor['name']); ?></h2>
             </div>
         </div>
+        <?php if (mysqli_num_rows($classes) > 0): ?>
         <div class="row">
             <?php while ($class = mysqli_fetch_assoc($classes)): ?>
                 <div class="col-lg-4 col-md-6">
@@ -77,10 +71,17 @@ if ($instructor_id > 0) {
             </div>
             <?php endwhile; ?>
         </div>
+        <?php else: ?>
+            <div class="row">
+                <div class="col">
+                    <p class="h4 text-muted">Sorry, No classes Alloted Yet.</p>
+                </div>
+            </div>
+        <?php endif; ?>
     <?php else: ?>
         <div class="row">
             <div class="col">
-                <p>Instructor not found.</p>
+                <p class="h4 text-muted">Instructor not found.</p>
             </div>
         </div>
     <?php endif; ?>
